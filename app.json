@@ -1,11 +1,28 @@
 {
   "expo": {
-    "name": "to-do",
+    "name": "Todo",
     "slug": "to-do",
     "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assests/todo.png",
+    "splash": {
+      "image": "./assets/todo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package":"downbadbuzor.todo",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/todo.png",
+        "backgroundColor": "#ffffff"
+      }
+    }
   },
-  "name": "to-do"
+  "name": "Todo"
 }

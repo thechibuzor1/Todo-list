@@ -22,6 +22,7 @@ export default function Todo() {
         style={{
           margin: 15,
           flexDirection: "row",
+          justifyContent: 'space-between',
         }}
       >
         <Text
@@ -38,7 +39,7 @@ export default function Todo() {
             style={{
               color: "grey",
               marginTop: 40,
-              marginLeft: "40%",
+               
             }}
           >
             {date.format("dddd MMMM Do")}

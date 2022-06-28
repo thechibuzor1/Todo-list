@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { StyleSheet, Text, View } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import index from "uuid-random";
+
 
 export default function AddtoDO() {
   const [active, setActive] = useState(false);
@@ -26,7 +26,7 @@ export default function AddtoDO() {
   }, []);
 
   const { todos } = useSelector((state) => state.todoReducer.todo);
-  const reMake = todos.filter((todo) => todo !== "");
+  const reMake = todos.filter((todo) => todo !== " ");
   const handleDelete = async (indexNo) => {
     dispatch({
       type: "delete",
