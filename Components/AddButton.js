@@ -11,47 +11,24 @@ import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function AddButton() {
+export default function AddButton({ todo, setTodo }) {
   const [visible, setVisible] = useState(false);
-  const [submit, setSubmit] = useState("");
-  const [todo, setTodo] = useState("");
-  const dispatch = useDispatch();
-
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const storage = async () => {
-      let items = await AsyncStorage.getItem("todo");
-      if (items) {
-        setData(JSON.parse(items));
-      }
-    };
-    storage();
-  }, []);
-
-  useEffect(() => {
-    setData([...data, todo]);
-  }, [submit]);
-
+  const [newEntry, setNewEntry] = useState("");
+ 
   const modalContent = () => {
-    const saveTodo = async () => {
-      if (!submit.trim()) {
+    const saveTodo = (newTodo) => {
+      if (!newTodo.trim()) {
         alert("Empty Todo");
       } else {
-        dispatch({
-          type: "add",
-          payload: submit,
-        });
-        try {
+        const newTodos = [...todo, newTodo];
 
-          setData(data.filter((data) => data !== ''))
-          await AsyncStorage.setItem("todo", JSON.stringify(data));
-          setVisible(false);
-          setTodo("");
-          setSubmit("");
-        } catch (e) {
-          console.log(e);
-        }
+        AsyncStorage.setItem("todo", JSON.stringify(newTodos))
+          .then(() => {
+            setTodo(newTodos);
+            setVisible(false);
+            setNewEntry("");
+          })
+          .catch((err) => console.log(err));
       }
     };
     return (
@@ -60,16 +37,15 @@ export default function AddButton() {
           <Text style={styles.title}>Add To Todo</Text>
           <Input
             placeholder="What needs to be done?"
-            onChangeText={(txt) => setSubmit(txt)}
-            value={submit}
+            onChangeText={(txt) => setNewEntry(txt)}
+            value={newEntry}
           />
 
           <View></View>
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
-              setTodo(submit);
-              saveTodo();
+              saveTodo(newEntry);
             }}
           >
             <Text style={styles.buttonTitle}>Add</Text>

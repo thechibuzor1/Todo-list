@@ -8,14 +8,9 @@ export default function Calender() {
   return (
     <View>
       <CalendarStrip
+        scrollable
         selectedDate={selectedDate}
-        onPressDate={(date) => {
-          setSelectedDate(date);
-        }}
-        onPressGoToday={(today) => {
-          setSelectedDate(today);
-        }}
-        markedDate={["2020-03-04", "2020-03-15", "2020-03-04", "2020-03-01"]}
+        markedDate={[selectedDate]}
         weekStartsOn={1}
       />
     </View>

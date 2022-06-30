@@ -1,4 +1,5 @@
 {
+  "displayName": "Todo",
   "expo": {
     "name": "Todo",
     "slug": "to-do",
@@ -6,7 +7,7 @@
     "orientation": "portrait",
     "icon": "./assests/todo.png",
     "splash": {
-      "image": "./assets/todo.png",
+      "image": "./assests/todo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,7 +20,7 @@
     "android": {
       "package":"downbadbuzor.todo",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/todo.png",
+        "foregroundImage": "./assests/todo.png",
         "backgroundColor": "#ffffff"
       }
     }

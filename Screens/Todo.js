@@ -14,7 +14,7 @@ import { Container, Content } from "native-base";
 import moment from "moment";
 import Calender from "../Components/Calender";
 
-export default function Todo() {
+export default function Todo({todo, setTodo}) {
   const date = moment();
   return (
     <SafeAreaView style={styles.container}>
@@ -53,10 +53,10 @@ export default function Todo() {
       <Calender />
       <Container>
         <ScrollView>
-          <AddtoDO />
+          <AddtoDO todo={todo} setTodo={setTodo}/>
         </ScrollView>
 
-        <AddButton />
+        <AddButton todo={todo} setTodo={setTodo}/>
       </Container>
     </SafeAreaView>
   );
